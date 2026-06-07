@@ -152,7 +152,7 @@ Sistem ini membantu proses pencatatan koleksi buku, pengelolaan anggota perpusta
 
 ### 1. Clone Repository
 ```
-git clone https://github.com/USERNAME/libraryease.git
+git clone https://github.com/RizkySabana/web2-uts
 ```
 
 ### 2. Masuk ke Folder Project
@@ -182,25 +182,10 @@ php artisan key:generate
 
 ### 6. Konfigurasi Database
 
-Opsi A — SQLite (lebih mudah, tanpa install MySQL):
-
-Ubah isi .env menjadi:
-```
-DB_CONNECTION=sqlite
-```
-Kemudian buat file database:
-```
-php -r "file_put_contents('database/database.sqlite', '');"
-```
-
-Opsi B — MySQL:
-
-Buat database baru di MySQL dengan nama misalnya libraryease, lalu sesuaikan file .env:
-```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=libraryease
+DB_DATABASE=web2-uts
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -374,46 +359,9 @@ Export PDF menggunakan DomPDF dengan tampilan landscape A4. Export Excel menggun
 
 ---
 
-## Screenshot
-
-### Login
-(Tambahkan Screenshot)
-
-### Dashboard Admin
-(Tambahkan Screenshot)
-
-### Dashboard Anggota
-(Tambahkan Screenshot)
-
-### Data Buku
-(Tambahkan Screenshot)
-
-### Data Anggota
-(Tambahkan Screenshot)
-
-### Transaksi Peminjaman
-(Tambahkan Screenshot)
-
-### Transaksi AJAX
-(Tambahkan Screenshot)
-
-### Modal Detail dengan Cover Buku
-(Tambahkan Screenshot)
-
-### Laporan
-(Tambahkan Screenshot)
-
-### Export PDF
-(Tambahkan Screenshot)
-
-### Export Excel
-(Tambahkan Screenshot)
-
----
-
 ## Repository
 
-https://github.com/USERNAME/libraryease
+https://github.com/RizkySabana/web2-uts
 
 ---
 
