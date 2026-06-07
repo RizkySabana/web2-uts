@@ -1,58 +1,426 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚  Sistem Peminjaman Buku Perpustakaan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Project UTS Pemrograman Web 2 — Studi Kasus Sistem Peminjaman Buku Perpustakaan Digital
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Deskripsi Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+LibraryEase merupakan aplikasi berbasis Laravel 13 yang digunakan untuk mengelola data perpustakaan kampus, termasuk koleksi buku, data anggota, dan transaksi peminjaman buku.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sistem ini membantu proses pencatatan koleksi buku, pengelolaan anggota perpustakaan, pemantauan status peminjaman dan pengembalian buku, serta pembuatan laporan dalam format PDF maupun Excel.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Fitur Utama
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Dashboard
+- Total Buku
+- Total Anggota
+- Total Sedang Dipinjam
+- Total Sudah Dikembalikan
+- Jumlah Keterlambatan Pengembalian
+- Grafik Transaksi per Bulan (Bar Chart)
+- Grafik Status Peminjaman (Doughnut Chart)
+- Tabel 5 Buku Terpopuler
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Buku
+- Tambah Buku
+- Lihat Daftar Buku
+- Detail Buku
+- Edit Buku
+- Hapus Buku
+- Upload Cover Buku
+- Filter Kategori
+- Pencarian Judul / Pengarang
+- Riwayat Peminjaman per Buku
 
-## Agentic Development
+### Anggota
+- Tambah Anggota
+- Lihat Daftar Anggota
+- Detail Anggota
+- Edit Anggota
+- Hapus Anggota
+- Pencarian Nama / Nomor Anggota
+- Riwayat Peminjaman per Anggota
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Transaksi Peminjaman
+- Catat Peminjaman Baru
+- Lihat Semua Transaksi
+- Detail Transaksi
+- Proses Pengembalian Buku
+- Hapus Data Transaksi
+- Filter Status (Dipinjam / Dikembalikan)
+- Deteksi Otomatis Keterlambatan
+- Stok Buku Otomatis Berkurang dan Bertambah saat Pengembalian
 
-```bash
-composer require laravel/boost --dev
+### Transaksi AJAX
+- Filter Real-time Tanpa Reload Halaman
+- Modal Detail Transaksi dengan Cover Buku
+- Proses Pengembalian via AJAX
+- Hapus Data via AJAX
+- Pagination Dinamis
 
-php artisan boost:install
+### Laporan
+- Filter Laporan berdasarkan Keyword, Status, Tanggal, Buku, dan Anggota
+- Preview Laporan dengan Statistik Ringkasan
+- Export PDF format A4 Landscape menggunakan DomPDF
+- Export Excel format .xlsx menggunakan Maatwebsite Excel
+
+---
+
+## Hak Akses
+
+### Admin
+- Mengelola semua data buku (Tambah, Edit, Hapus, Upload Cover)
+- Mengelola semua data anggota (Tambah, Edit, Hapus)
+- Mencatat peminjaman untuk anggota manapun
+- Memproses pengembalian buku
+- Menghapus data transaksi
+- Mengakses laporan dan export PDF maupun Excel
+- Mengakses semua fitur dashboard dan halaman AJAX
+
+### Anggota
+- Melihat koleksi buku perpustakaan
+- Meminjam buku hanya untuk diri sendiri
+- Melihat riwayat transaksi milik sendiri
+- Mengakses halaman AJAX hanya untuk melihat data
+- Dashboard pribadi berisi statistik peminjaman sendiri
+
+---
+
+## Teknologi Yang Digunakan
+
+- Laravel 13.14.0
+- PHP 8.4.22
+- MySQL / SQLite
+- Bootstrap 5.3.3
+- jQuery 3.7.1
+- Chart.js untuk Grafik Dashboard
+- Font Awesome 6.5.0
+- barryvdh/laravel-dompdf versi ^3.1 untuk Export PDF
+- maatwebsite/excel versi ^3.1 untuk Export Excel
+- AJAX menggunakan jQuery $.get dan $.ajax
+
+---
+
+## Struktur Database
+
+### Tabel users
+- id
+- name
+- email
+- password
+- role (admin / anggota)
+- anggota_id (nullable, relasi ke tabel anggotas)
+
+### Tabel bukus
+- id
+- kode_buku
+- judul
+- pengarang
+- penerbit
+- tahun_terbit
+- kategori
+- stok_total
+- stok_tersedia
+- cover_path (nullable, path gambar cover)
+- deskripsi
+
+### Tabel anggotas
+- id
+- nomor_anggota
+- nama
+- email
+- telepon
+- alamat
+- tanggal_daftar
+- status (aktif / nonaktif)
+
+### Tabel transaksis
+- id
+- buku_id (FK ke bukus)
+- anggota_id (FK ke anggotas)
+- tanggal_pinjam
+- tanggal_kembali_rencana (batas pengembalian 7 hari)
+- tanggal_kembali_aktual (nullable)
+- status (dipinjam / dikembalikan)
+
+---
+
+## Cara Instalasi
+
+### 1. Clone Repository
+```
+git clone https://github.com/USERNAME/libraryease.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Masuk ke Folder Project
+```
+cd libraryease
+```
 
-## Contributing
+### 3. Install Dependency PHP
+```
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Copy Environment
+Windows:
+```
+copy .env.example .env
+```
+Linux / Mac:
+```
+cp .env.example .env
+```
 
-## Code of Conduct
+### 5. Generate Key
+```
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Konfigurasi Database
 
-## Security Vulnerabilities
+Opsi A — SQLite (lebih mudah, tanpa install MySQL):
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ubah isi .env menjadi:
+```
+DB_CONNECTION=sqlite
+```
+Kemudian buat file database:
+```
+php -r "file_put_contents('database/database.sqlite', '');"
+```
 
-## License
+Opsi B — MySQL:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Buat database baru di MySQL dengan nama misalnya libraryease, lalu sesuaikan file .env:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=libraryease
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 7. Migrasi dan Seeder
+```
+php artisan migrate:fresh --seed
+```
+
+### 8. Storage Link
+```
+php artisan storage:link
+```
+
+### 9. Jalankan Server
+```
+php artisan serve
+```
+
+### 10. Buka Browser
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## Akun Login Seeder
+
+Admin
+- Email    : admin@perpus.test
+- Password : password123
+- Akses    : Penuh (semua fitur)
+
+Anggota
+- Email    : budi.pratama@perpus.test
+- Password : password123
+- Akses    : Terbatas (lihat buku, pinjam sendiri)
+
+- Email    : siti.aminah@perpus.test
+- Password : password123
+
+- Email    : rizky.maulana@perpus.test
+- Password : password123
+
+- Email    : dewi.sartika@perpus.test
+- Password : password123
+
+---
+
+## Perintah Artisan Penting
+
+Reset database dan isi ulang data:
+```
+php artisan migrate:fresh --seed
+```
+
+Hapus cache route:
+```
+php artisan route:clear
+```
+
+Hapus cache view:
+```
+php artisan view:clear
+```
+
+Hapus semua cache aplikasi:
+```
+php artisan cache:clear
+```
+
+Cek semua route yang terdaftar:
+```
+php artisan route:list
+```
+
+Masuk ke Tinker untuk debug database:
+```
+php artisan tinker
+```
+
+---
+
+## Struktur Folder Penting
+
+```
+libraryease/
+├── app/
+│   ├── Exports/
+│   │   └── PeminjamanExport.php
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── AuthController.php
+│   │   │   ├── DashboardController.php
+│   │   │   ├── BukuController.php
+│   │   │   ├── AnggotaController.php
+│   │   │   ├── TransaksiController.php
+│   │   │   ├── TransaksiAjaxController.php
+│   │   │   └── LaporanController.php
+│   │   └── Middleware/
+│   │       ├── IsAdmin.php
+│   │       └── IsAnggota.php
+│   ├── Interfaces/
+│   │   └── PeminjamanInterface.php
+│   ├── Models/
+│   │   ├── User.php
+│   │   ├── Buku.php
+│   │   ├── Anggota.php
+│   │   └── Transaksi.php
+│   └── Services/
+│       └── PeminjamanService.php
+├── database/
+│   ├── migrations/
+│   │   ├── xxxx_create_bukus_table.php
+│   │   ├── xxxx_create_anggotas_table.php
+│   │   ├── xxxx_create_transaksis_table.php
+│   │   └── xxxx_add_role_to_users_table.php
+│   └── seeders/
+│       ├── UserSeeder.php
+│       ├── BukuSeeder.php
+│       ├── AnggotaSeeder.php
+│       └── DatabaseSeeder.php
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   └── app.blade.php
+│       ├── auth/
+│       │   └── login.blade.php
+│       ├── dashboard/
+│       │   ├── index.blade.php
+│       │   └── anggota.blade.php
+│       ├── buku/
+│       ├── anggota/
+│       ├── transaksi/
+│       │   ├── ajax.blade.php
+│       │   └── partials/_table_ajax.blade.php
+│       └── laporan/
+│           ├── index.blade.php
+│           └── pdf.blade.php
+└── routes/
+    └── web.php
+```
+
+---
+
+## Implementasi Modul
+
+Modul 2 - OOP
+Menggunakan Interface PeminjamanInterface dan Service Class PeminjamanService yang mengimplementasikan interface tersebut. Logika bisnis peminjaman dan pengembalian buku dipisahkan dari controller menggunakan Dependency Injection.
+
+Modul 3 - MVC Routing, Controller, View Dasar
+Terdapat 7 Controller dengan routing terstruktur menggunakan Route::resource, Route::group, Route::prefix, dan Route::middleware untuk proteksi akses.
+
+Modul 4 - Blade Template, Layout, dan Form
+Menggunakan master layout app.blade.php dengan @yield dan @section. Form menggunakan @csrf, @error untuk validasi, @old untuk mempertahankan input, dan @push/@stack untuk script per halaman.
+
+Modul 5 - Database, Migration, Eloquent, CRUD
+Terdapat 4 tabel dengan migration lengkap. Model Eloquent menggunakan relasi hasMany dan belongsTo. CRUD lengkap di semua modul dengan pagination, pencarian, dan filter. Data awal diisi menggunakan Seeder.
+
+Modul 6 - Keamanan Aplikasi
+Sistem autentikasi menggunakan Auth::attempt dengan session regenerate untuk mencegah session fixation. Middleware IsAdmin melindungi route sensitif. Setiap form dilindungi CSRF token.
+
+Modul 7 - Penanganan File dan Gambar
+Upload cover buku menggunakan Storage::disk public dengan validasi tipe gambar dan maksimal 2MB. File lama dihapus otomatis saat update. Storage link dibuat dengan php artisan storage:link.
+
+Modul 8 - AJAX dan jQuery
+Halaman Transaksi AJAX menggunakan jQuery untuk filter real-time dengan debounce, modal detail menampilkan cover buku, proses pengembalian dan hapus data tanpa reload halaman menggunakan method PATCH dan DELETE.
+
+Modul 9 - Konversi PDF dan Excel
+Export PDF menggunakan DomPDF dengan tampilan landscape A4. Export Excel menggunakan Maatwebsite dengan WithHeadings, WithMapping, dan ShouldAutoSize. Keduanya mendukung filter data sebelum diekspor.
+
+---
+
+## Screenshot
+
+### Login
+(Tambahkan Screenshot)
+
+### Dashboard Admin
+(Tambahkan Screenshot)
+
+### Dashboard Anggota
+(Tambahkan Screenshot)
+
+### Data Buku
+(Tambahkan Screenshot)
+
+### Data Anggota
+(Tambahkan Screenshot)
+
+### Transaksi Peminjaman
+(Tambahkan Screenshot)
+
+### Transaksi AJAX
+(Tambahkan Screenshot)
+
+### Modal Detail dengan Cover Buku
+(Tambahkan Screenshot)
+
+### Laporan
+(Tambahkan Screenshot)
+
+### Export PDF
+(Tambahkan Screenshot)
+
+### Export Excel
+(Tambahkan Screenshot)
+
+---
+
+## Repository
+
+https://github.com/USERNAME/libraryease
+
+---
+
+## Author
+
+Project UTS Pemrograman Web 2
+Studi Kasus Sistem Peminjaman Buku Perpustakaan
+
+LibraryEase - Sistem Peminjaman Buku Perpustakaan Digital
+Dibangun dengan Laravel 13 - Tema Krem dan Hijau Safir
