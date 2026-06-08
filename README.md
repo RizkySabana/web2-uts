@@ -93,7 +93,7 @@ Sistem ini membantu proses pencatatan koleksi buku, pengelolaan anggota perpusta
 
 - Laravel 13.14.0
 - PHP 8.4.22
-- MySQL / SQLite
+- MySQL
 - Bootstrap 5.3.3
 - jQuery 3.7.1
 - Chart.js untuk Grafik Dashboard
