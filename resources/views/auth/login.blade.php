@@ -163,7 +163,7 @@
         <div class="hint-box">
             <strong>Akun Demo:</strong><br>
             Admin: admin@perpus.test / password123<br>
-            Staff: petugas@perpus.test / password123
+            Anggota : rizky.sabana@perpus.test / password123
         </div>
     </div>
 </body>
