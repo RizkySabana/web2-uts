@@ -38,8 +38,23 @@ class AnggotaController extends Controller
             'tanggal_daftar' => 'required|date',
             'status' => 'required|in:aktif,nonaktif',
         ]);
-        Anggota::create($data);
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil ditambahkan.');
+
+        // Simpan data anggota
+        $anggota = Anggota::create($data);
+
+        // Otomatis buat akun login untuk anggota baru
+        if ($anggota->email) {
+            \App\Models\User::create([
+                'name' => $anggota->nama,
+                'email' => $anggota->email,
+                'password' => \Illuminate\Support\Facades\Hash::make('password123'),
+                'role' => 'anggota',
+                'anggota_id' => $anggota->id,
+            ]);
+        }
+
+        return redirect()->route('anggota.index')
+            ->with('success', 'Anggota berhasil ditambahkan. Akun login otomatis dibuat dengan password: password123');
     }
 
     public function show($id)
