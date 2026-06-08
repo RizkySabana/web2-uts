@@ -23,7 +23,7 @@ class BukuController extends Controller
         }
         $kategoris = Buku::select('kategori')->distinct()->pluck('kategori');
         return view('buku.index', [
-            'bukus' => $query->paginate(3)->withQueryString(),
+            'bukus' => $query->paginate(5)->withQueryString(),
             'kategoris' => $kategoris,
         ]);
     }
