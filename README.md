@@ -6,13 +6,13 @@ Project UTS Pemrograman Web 2 — Studi Kasus Sistem Peminjaman Buku Perpustakaa
 
 ## Deskripsi Project
 
-LibraryEase merupakan aplikasi berbasis Laravel 13 yang digunakan untuk mengelola data perpustakaan kampus, termasuk koleksi buku, data anggota, dan transaksi peminjaman buku.
+Perpustakaan Digital merupakan aplikasi berbasis Laravel 13 yang digunakan untuk mengelola data perpustakaan kampus, termasuk koleksi buku, data anggota, dan transaksi peminjaman buku.
 
 Sistem ini membantu proses pencatatan koleksi buku, pengelolaan anggota perpustakaan, pemantauan status peminjaman dan pengembalian buku, serta pembuatan laporan dalam format PDF maupun Excel.
 
 ---
 
-## Fitur Utama
+## Fitur - Fitur web2-uts Perpustakaan Digital
 
 ### Dashboard
 - Total Buku
@@ -157,7 +157,7 @@ git clone https://github.com/RizkySabana/web2-uts
 
 ### 2. Masuk ke Folder Project
 ```
-cd libraryease
+cd web2-uts
 ```
 
 ### 3. Install Dependency PHP
@@ -169,10 +169,6 @@ composer install
 Windows:
 ```
 copy .env.example .env
-```
-Linux / Mac:
-```
-cp .env.example .env
 ```
 
 ### 5. Generate Key
@@ -272,7 +268,7 @@ php artisan tinker
 ## Struktur Folder Penting
 
 ```
-libraryease/
+web2-uts/
 ├── app/
 │   ├── Exports/
 │   │   └── PeminjamanExport.php
@@ -370,5 +366,5 @@ https://github.com/RizkySabana/web2-uts
 Project UTS Pemrograman Web 2
 Studi Kasus Sistem Peminjaman Buku Perpustakaan
 
-LibraryEase - Sistem Peminjaman Buku Perpustakaan Digital
+web2-uts Perpustakaan Digital - Sistem Peminjaman Buku Perpustakaan Digital
 Dibangun dengan Laravel 13 - Tema Krem dan Hijau Safir
